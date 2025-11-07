@@ -5,9 +5,43 @@ import { useEffect, useRef, useState } from "react";
 export default function Home() {
 
   const [hover, setHover] = useState(0)
+  const contentRef = useRef(null);
+
   const [hover1, setHover1] = useState(0)
   const [clickVal, setClickVal] = useState(1)
   const carousel = [
+    {
+      image: "/image.png",
+      text: "Karnataka: Hub of Innovation and Investment"
+    },
+    {
+      image: "/image2.png",
+      text: "Bengaluru Leads in Tech Startups and Funding"
+    },
+    {
+      image: "/image3.png",
+      text: "Karnataka’s Booming Industrial Growth"
+    },
+    {
+      image: "/image4.png",
+      text: "Investors Flock to Karnataka’s Thriving Ecosystem"
+    },
+    {
+      image: "/image.png",
+      text: "Karnataka: Hub of Innovation and Investment"
+    },
+    {
+      image: "/image2.png",
+      text: "Bengaluru Leads in Tech Startups and Funding"
+    },
+    {
+      image: "/image3.png",
+      text: "Karnataka’s Booming Industrial Growth"
+    },
+    {
+      image: "/image4.png",
+      text: "Investors Flock to Karnataka’s Thriving Ecosystem"
+    },
     {
       image: "/image.png",
       text: "Karnataka: Hub of Innovation and Investment"
@@ -70,7 +104,7 @@ export default function Home() {
 
   const handleClick = (val) => {
     setClickVal(val)
-    document.querySelector("#content")?.scrollIntoView({ behavior: "smooth" });
+    contentRef.current?.scrollIntoView({ behavior: "smooth" });
   }
 
   return (
@@ -94,7 +128,7 @@ export default function Home() {
           <div className="flex justify-between">
             <div className="flex items-center gap-5">
               <div>
-                <Image height={50}  width={50} src={"/Rectangle.png"} alt="Rect" />
+                <Image height={50} width={50} src={"/Rectangle.png"} alt="Rect" />
               </div>
               <div>
                 <Image height={200} width={130} src={"/logo 1.png"} alt="Logo" />
@@ -133,7 +167,7 @@ export default function Home() {
 
             <div className="flex justify-end">
               <div>
-                <div onMouseEnter={(e) => { setHover(1) }} onMouseLeave={(e) => { setHover(0) }} onClick={(e) => { handleClick(1) }} className={`flex relative items-center px-10  ${hover == 1 ? "bg-red-500" : "bg-white/0"} backdrop-blur-xs rounded-3xl gap-8 border border-white w-[350px] py-10`}>
+                <div onMouseEnter={(e) => { setHover(1) }} onMouseLeave={(e) => { setHover(0) }} onClick={(e) => { handleClick(1) }} className={`flex relative items-center px-10  ${hover == 1 ? "bg-red-500" : "bg-white/0"} backdrop-blur-md rounded-3xl gap-8 border border-transparent w-[350px] py-10`}>
                   <div className={`rounded-full bg-red-500  ${hover == 1 ? "border border-white" : ""} w-16 h-16 flex justify-center items-center`}>
                     <Image height={25} width={25} src={'/Vector.png'} alt="Icon" />
                   </div>
@@ -146,7 +180,7 @@ export default function Home() {
                 </div>
 
 
-                <div onMouseEnter={(e) => { setHover(2) }} onMouseLeave={(e) => { setHover(0) }} onClick={(e) => { handleClick(2) }} className={`flex relative items-center mt-5 px-10 ${hover == 2 ? "bg-red-500" : "bg-white/20"} backdrop-blur-xs rounded-3xl gap-8 border border-white w-[350px] py-10`}>
+                <div onMouseEnter={(e) => { setHover(2) }} onMouseLeave={(e) => { setHover(0) }} onClick={(e) => { handleClick(2) }} className={`flex relative items-center mt-5 px-10 ${hover == 2 ? "bg-red-500" : "bg-white/20"} backdrop-blur-md rounded-3xl gap-8 border border-transparent w-[350px] py-10`}>
                   <div className={`rounded-full bg-red-500 w-16  ${hover == 2 ? "border border-white" : ""} h-16 flex justify-center items-center`}>
                     <Image height={30} width={30} src={'/Vector1.png'} alt="Icon" />
                   </div>
@@ -159,7 +193,7 @@ export default function Home() {
                 </div>
 
 
-                <div onMouseEnter={(e) => { setHover(3) }} onMouseLeave={(e) => { setHover(0) }} onClick={(e) => { handleClick(3) }} className={`flex relative items-center mt-5 px-10 ${hover == 3 ? "bg-red-500" : "bg-white/20"} backdrop-blur-xs rounded-3xl gap-8 border border-white w-[350px] py-10`}>
+                <div onMouseEnter={(e) => { setHover(3) }} onMouseLeave={(e) => { setHover(0) }} onClick={(e) => { handleClick(3) }} className={`flex relative items-center mt-5 px-10 ${hover == 3 ? "bg-red-500" : "bg-white/20"} backdrop-blur-md border-transparent rounded-3xl gap-8 border  w-[350px] py-10`}>
                   <div className={`rounded-full bg-red-500  ${hover == 3 ? "border border-white" : ""} w-16 h-16 flex justify-center items-center`}>
                     <Image height={30} width={30} src={'/Vector2.png'} alt="Icon" />
                   </div>
@@ -179,7 +213,7 @@ export default function Home() {
 
       <div>
         <div className="relative">
-          <div className="w-[1200px] absolute -top-16 left-1/2 -translate-x-1/2 mx-auto overflow-hidden py-3 border border-gray-700 bg-gray-900 rounded-xl">
+          <div className="w-[1350px] absolute -top-16 left-1/2 -translate-x-1/2 mx-auto overflow-hidden py-3 border border-gray-700 bg-gray-900 rounded-xl">
             <div
               ref={containerRef}
               className="flex gap-4 overflow-x-auto scroll-smooth no-scrollbar"
@@ -206,34 +240,34 @@ export default function Home() {
         </div>
       </div>
 
-      <div id="content" className="m-20 mt-40 rounded-xl">
-        <div className="relative  rounded-xl  px-20 py-20 bg-[url('/right.png')] bg-cover bg-center bg-no-repeat">
-            <div className="absolute inset-0 bg-[#383838]/90" />
+      <div ref={contentRef} className="m-20 mt-40 rounded-4xl">
+        <div className="relative overflow-hidden rounded-4xl  px-20 py-20 bg-[url('/right.png')] bg-cover bg-center bg-no-repeat">
+          <div className="absolute inset-0 bg-[#383838]/90" />
           <div className="relative z-10">
             <h2 className="text-3xl text-white font-bold leading-10 opacity-100">{clickVal == 1 ? "About" : clickVal == 2 ? "Why invest in" : "How to"} <br />{clickVal == 3 ? "Invest" : "Karnataka"}</h2>
             <p className="text-lg text-white font-light mt-5 w-1/2">
               Karnataka located in the south of India, is known for its rich heritage and tech innovation. It has made a global mark by creating opportunities and bringing India to the world stage.
             </p>
             <div className="mt-40 flex justify-between">
-              <div onMouseEnter={(e) => { setHover1(1) }} onMouseLeave={(e) => { setHover1(0) }} className={`border border-white px-10 py-4 w-80 rounded-full ${hover1 == 1 ? "bg-red-500" : ""}`}>
-                <div className="flex gap-8  ">
-                  <p className="text-xl text-white text-center">State at a Glance </p>
+              <div onMouseEnter={(e) => { setHover1(1) }} onMouseLeave={(e) => { setHover1(0) }} className={`border border-gray-500 px-10 py-4 w-96 rounded-full ${hover1 == 1 ? "bg-red-500" : ""}`}>
+                <div className="flex gap-8  justify-between">
+                  <p className="text-2xl text-white text-center">State at a Glance </p>
                   <div className="border w-8 h-8 flex justify-center items-center border-white rounded-full">
                     <i className="fa-solid fa-arrow-up text-white rotate-45 text-sm animate-bounce"></i>
                   </div>
                 </div>
               </div>
-              <div onMouseEnter={(e) => { setHover1(2) }} onMouseLeave={(e) => { setHover1(0) }} className={`border border-white px-10 py-4 w-80 rounded-full ${hover1 == 2 ? "bg-red-500" : ""}`} >
-                <div className="flex gap-8  ">
-                  <p className="text-xl text-white text-center">History and Culture </p>
+              <div onMouseEnter={(e) => { setHover1(2) }} onMouseLeave={(e) => { setHover1(0) }} className={`border border-gray-500 px-10 py-4 w-96 rounded-full ${hover1 == 2 ? "bg-red-500" : ""}`} >
+                <div className="flex gap-8 justify-between ">
+                  <p className="text-2xl text-white text-center">History and Culture </p>
                   <div className="border w-8 h-8 flex justify-center items-center border-white rounded-full">
                     <i className="fa-solid fa-arrow-up text-white rotate-45 text-sm animate-bounce"></i>
                   </div>
                 </div>
               </div>
-              <div onMouseEnter={(e) => { setHover1(3) }} onMouseLeave={(e) => { setHover1(0) }} className={`${hover1 == 3 ? "bg-red-500" : ""} border border-white px-10 py-4 w-80 rounded-full`} >
-                <div className="flex gap-3  ">
-                  <p className="text-xl text-white text-center">Discover our Districts</p>
+              <div onMouseEnter={(e) => { setHover1(3) }} onMouseLeave={(e) => { setHover1(0) }} className={`${hover1 == 3 ? "bg-red-500" : ""} border border-gray-500 px-10 py-4 w-96 rounded-full`} >
+                <div className="flex gap-3  justify-between">
+                  <p className="text-2xl text-white text-center">Discover our Districts</p>
                   <div className="border w-8 h-8 flex justify-center items-center border-white rounded-full">
                     <i className="fa-solid fa-arrow-up text-white rotate-45 text-sm animate-bounce"></i>
                   </div>
@@ -241,8 +275,8 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="absolute top-0 right-0 rounded-bl-[100px] rounded-tr-[20px] shadow-[ -40px_40px_60px_-20px_rgba(0,0,0,0.5)] ">
-            <Image className="rounded-bl-[100px]" alt="About US" height={450} width={450} src={'/7ed9791fecf086233b241e8d96679860d0102cdc.jpg'} />
+          <div className="absolute top-0 right-0 rounded-bl-[180px] overflow-hidden rounded-tr-[20px] shadow-[ -40px_40px_60px_-20px_rgba(0,0,0,0.5)] ">
+            <Image className="" alt="About US" height={500} width={500} src={'/7ed9791fecf086233b241e8d96679860d0102cdc.jpg'} />
           </div>
         </div>
       </div >
